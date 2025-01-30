@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+  <title>calculator</title>
+  <style>
+
+    body{
+      background-color: black;
+    }
+
+    .numbers{
+      height: 60px;
+      width: 60px;
+      border-radius: 30px;
+      color: white;
+      background-color: rgb(58, 56, 56);
+      font-family: Arial, Helvetica, sans-serif;
+      border-width: 0px;
+      font-size: 25px;
+      font-weight: 500;
+      margin-right: 5px;
+
+
+
+    }
+    
+
+    .math{
+      height: 60px;
+      width: 60px;
+      border-radius: 30px;
+      background-color: orange;
+      border-width: 0px;
+      font-size: 25px;
+      font-weight: 500;
+      margin-right: 5px;
+      color: white;
+
+    }
+
+    
+    
+
+  </style>
+
+
+</head>
+<body>
+  <p>Calculator</p>
+
+  <div>
+    <p>
+      <button class="numbers" onclick="
+      console.log(updateCalculation (1));">1
+      </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation (2));
+      ">2
+    </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation (3));">3
+    </button>
+  
+      <button class="math" onclick="
+     console.log(updateCalculation ('+'));">+
+      </button>
+    </p>
+  
+    <p>
+      <button class="numbers" onclick="
+      console.log(updateCalculation (4));">4
+      </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation (5));">5
+        </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation (6));">6
+    </button>
+  
+      <button class="math" onclick="
+      console.log(updateCalculation ('-'));">-
+      </button>
+    </p>
+  
+    <p>
+      <button class="numbers" onclick="
+      console.log(updateCalculation (7));">7
+      </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation (9));">8
+        </button>
+  
+      <button class="numbers" onclick="
+     console.log(updateCalculation (9));">9
+    </button>
+  
+      <button class="math" onclick="
+      console.log(updateCalculation ('*'));">*
+      </button>
+    </p>
+  
+  
+    <p>
+      <button class="numbers" onclick="
+      console.log(updateCalculation (0));">0
+      </button>
+  
+      <button class="numbers" onclick="
+     console.log(updateCalculation ('.'));">.
+        </button>
+  
+      <button class="numbers" onclick="
+      console.log(updateCalculation ('='));">=
+    </button>
+  
+     <button class="math" onclick="
+      console.log(updateCalculation ('/'));">/
+      </button>
+    </p>
+  
+    <button style="font-size: 16px;" class="numbers" onclick="
+     calculation = '';
+     console.log(calculation)"
+    >Clear</button>
+     
+
+  </div>
+
+ 
+
+  <script>
+    let calculation = '';
+
+    function updateCalculation (numbersCalculator) {
+
+      if (numbersCalculator === '=') {
+        eval(calculation);
+        calculation = eval(calculation);
+        return calculation;
+      }else {
+
+        calculation += numbersCalculator;
+        return calculation;
+
+      }
+       
+    }
+    
+  </script>
+</body>
