@@ -114,7 +114,9 @@
         </button>
   
       <button class="numbers" onclick="
-      console.log(updateCalculation ('='));">=
+      
+      calculation = eval(calculation);
+      console.log(calculation)">=
     </button>
   
      <button class="math" onclick="
@@ -134,22 +136,16 @@
 
   <script>
     
-    let calculation = '';
-    localStorage.setItem('calculation', calculation);
+    let calculation =  localStorage.getItem(calculation)||'';
+   
 
     function updateCalculation (numbersCalculator) {
 
-      if (numbersCalculator === '=') {
-        eval(calculation);
-        calculation = eval(calculation);
-        return calculation;
-      }else {
 
         calculation += numbersCalculator;
-        return calculation;
+        console.log(calculation);
 
-      }
-      localStorage.setItem('calculation', calculation);
+       localStorage.setItem('calculation', calculation);
        
     }
     
