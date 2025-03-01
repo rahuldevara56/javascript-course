@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <button class="js-add-button" onclick="
+      addButton();">add to cart</button>
+      <p class="js-message"></p>
+    <script>
+      function addButton(){
+        const element = document.querySelector('.js-message');
+        element.innerHTML = 'added';
+        
+        clearTimeout(timeoutId);
+
+
+        timeoutId = setTimeout(function(){
+          element.innerHTML = '';
+        },2000);
+
+      };
+      
+    </script>
+  </body>
+</html>

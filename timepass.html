@@ -1,50 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>timepass</title>
+    <title>App</title>
   </head>
   <body>
-    <p>Tudo List</p>
-    <input class="js-name-input" placeholder="Todo name"
-    onkeydown="onkeydownElement(event);">
+    <!--
+      Note: This is just a sample solution. Other
+      solutions are possible so don't worry if
+      your solution looks different.
+    -->
     <button onclick="
-    addTudo();
-    ">add</button>
-    <div class="js-todo-list"></div>
-    <script>
-    const todoList =[];
+      messages++;
+      displayNotification();
+    ">Add</button>
 
-    renderTodoList();
+    <button onclick="
+      if (messages > 0) {
+        messages--;
 
-    function renderTodoList(){
-     let todoListHTML = '';
-      for(let i=0; i<todoList.length;i++){
-        const todo = todoList[i];
-        const html = `<P>${todo}</P>`;
-        todoListHTML += html;
+        // If there are no new messages, stop displaying
+        // the notification in the tab.
+        if (messages === 0) {
+          stopNotification();
+        }
       }
-      document.querySelector('.js-todo-list')
-      .innerHTML =todoListHTML;
-    };
-     
-       function addTudo(){
-        const inputElement = document.querySelector('.js-name-input');
-        const name = inputElement.value;
-        
-        todoList.push(name);
+    ">Remove</button>
 
-        inputElement.value = '';
+    <script>
+      let messages = 2;
 
-        renderTodoList();
-      };
+      // Save the intervalId in case we need to cancel it.
+      let intervalId;
 
-      function onkeydownElement(event){
-        if(event.key === 'Enter'){
-          addTudo();
+      // We'll use this variable to keep track of whether
+      // or not we're displaying the notification.
+      let isDisplayingNotification;
+
+      // Start displaying the notification in the tab
+      // when the page first loads.
+      displayNotification();
+
+      function displayNotification() {
+        // If we're already displaying the notification,
+        // stop this function because we don't want to
+        // create 2 intervals at the same time.
+        if (isDisplayingNotification) {
+          return;
         }
 
-        };
+        isDisplayingNotification = true;
 
+        intervalId = setInterval(function() {
+          if (document.title === 'App') {
+            document.title = `(${messages}) New messages`;
+          } else {
+            document.title = 'App';
+          }
+        }, 1000);
+      }
+
+      function stopNotification() {
+        isDisplayingNotification = false;
+
+        clearInterval(intervalId);
+        document.title = 'App';
+      }
     </script>
   </body>
 </html>
